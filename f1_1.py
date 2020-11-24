@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-   
 from flask import *
-
+import os
 app = Flask(__name__) 
 #@app.route('/') 
 #def index(): 
@@ -114,4 +114,6 @@ def form_sample():
         return "Форма отправлена"
 
 if __name__ == '__main__':  # код запускает приложение
-    app.run(port=8080, host='127.0.0.1')  # оно запускается на порту 8080, host, откуда будет обращение
+   # app.run(port=8080, host='127.0.0.1')  # оно запускается на порту 8080, host, откуда будет обращение
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
